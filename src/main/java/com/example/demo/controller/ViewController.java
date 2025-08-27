@@ -30,4 +30,9 @@ public class ViewController {
     public String post_detail() {
         return "post-detail";
     }
+
+    @GetMapping("/fortune/today")
+    public String  today() {
+        return "fortune";
+    }
 }
