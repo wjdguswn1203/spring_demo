@@ -1,0 +1,72 @@
+:root{
+  --fc-bg: #fff7ea;
+  --fc-grad: linear-gradient(135deg,#fff2d5 0%, #ffe7b8 50%, #ffd9a3 100%);
+  --fc-ink: #3a2c18;
+  --fc-accent: #b67300;
+  --fc-accent-2: #ff9f1a;
+  --fc-card: #fffaf0;
+  --fc-shadow: 0 10px 30px rgba(0,0,0,.08);
+  --fc-radius: 18px;
+}
+html,body{height:100%}
+body{
+  background: var(--fc-grad);
+  color: var(--fc-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Pretendard", "Segoe UI", Roboto, "Noto Sans KR", Arial, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+a { color: var(--fc-accent); text-decoration: none; }
+a:hover { color: var(--fc-accent-2); }
+.fc-nav{
+  backdrop-filter: blur(6px);
+  background: rgba(255, 249, 237, .6);
+  border: 1px solid rgba(0,0,0,.04);
+  border-radius: 12px;
+}
+.fc-hero{
+  padding: 72px 0 48px;
+  text-align: center;
+}
+.fc-hero .badge{
+  background: #fff3cd; color:#8a5a00; border:1px solid #ffe9a7;
+}
+.fc-title{
+  font-weight: 800; letter-spacing: -0.02em;
+  font-size: clamp(28px, 4.2vw, 52px);
+}
+.fc-sub{ opacity:.8; font-size: clamp(14px, 1.8vw, 18px); }
+.fc-card{
+  background: var(--fc-card);
+  border-radius: var(--fc-radius);
+  box-shadow: var(--fc-shadow);
+  border: 1px solid rgba(0,0,0,.05);
+}
+.fc-btn{
+  background: linear-gradient(180deg, #ffd28a, #ffb347);
+  border: none;
+  color: #3a2c18;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: 0 6px 14px rgba(255, 165, 0, .25);
+}
+.fc-btn:hover{ filter: brightness(.98); transform: translateY(-1px); }
+.fc-ghost{
+  border: 1px dashed #e6c288; background: rgba(255,255,255,.6);
+  color:#8a5a00; border-radius: 10px; padding: 10px 14px;
+}
+.fc-cookie{
+  width: 72px; height:72px; border-radius: 50%;
+  display:inline-grid; place-items:center;
+  background: radial-gradient(circle at 35% 35%, #ffcc80, #e6a64b 60%, #c8852e 100%);
+  box-shadow: inset 0 6px 12px rgba(255,255,255,.4), 0 8px 24px rgba(0,0,0,.12);
+}
+.fc-cookie span{ font-size: 34px }
+.fc-form-title{
+  font-weight: 800; letter-spacing: -.02em; font-size: 26px;
+}
+.fc-input.form-control{
+  border-radius: 12px; padding: 12px 14px; border:1px solid #e8d8b6;
+  background: #fffdfa;
+}
+.fc-sep{ height:1px; background: rgba(0,0,0,.06); }
+.fc-small{ font-size: 12px; opacity:.8 }

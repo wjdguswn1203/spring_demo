@@ -1,0 +1,28 @@
+<!-- DOCTYPE, <html>, <body> 없이 “조각만” 둡니다 -->
+<nav class="navbar navbar-expand-lg container mt-3 px-3 fc-nav" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-2" th:href="@{/}">
+            <div class="fc-cookie"><span>🥠</span></div>
+            <strong>FortuneCookie</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#fcNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="fcNav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+<!--                <li class="nav-item" th:if="${#authentication?.authenticated}">-->
+<!--                    <a class="nav-link" th:href="@{/history}">내 기록</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" th:if="${#authentication?.authenticated}">-->
+<!--                    <form th:action="@{/logout}" method="post" class="d-inline">-->
+<!--                        <button class="btn btn-sm fc-ghost" type="submit">로그아웃</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="btn btn-sm fc-btn" th:href="@{/login}">로그인</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

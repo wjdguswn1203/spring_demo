@@ -1,51 +1,47 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>로그인</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background: linear-gradient(to right, #89f7fe, #66a6ff); min-height:100vh; }
-        .card { border-radius: 1rem; box-shadow: 0 8px 20px rgba(0,0,0,.1); }
-    </style>
+    <title>로그인 · FortuneCookie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/fortune.css}" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center justify-content-center">
-<div class="card p-4 p-md-5" style="max-width:420px; width:100%">
-    <h2 class="mb-4 text-center">로그인 🔑</h2>
-    <form id="loginForm">
-        <div class="mb-3">
-            <label class="form-label">이메일</label>
-            <input type="email" class="form-control" id="email" required placeholder="you@example.com">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">비밀번호</label>
-            <input type="password" class="form-control" id="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">로그인</button>
-    </form>
-</div>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const body = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-      };
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      if (res.ok) {
-        const user = await res.json();
-        localStorage.setItem("userName", user.name);
-        location.href = '/post';
-      } else {
-        alert('로그인 실패: ' + await res.text());
-      }
-    });
-</script>
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-7 col-lg-5">
+            <div class="fc-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="fc-cookie mb-2"><span>🥠</span></div>
+                    <div class="fc-form-title">다시 오셨네요!</div>
+                    <div class="fc-small text-muted mt-1">운세를 보려면 로그인하세요.</div>
+                </div>
+                <form th:action="@{/login}" method="post" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label">이메일</label>
+                        <input type="email" name="username" class="form-control fc-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label d-flex justify-content-between">
+                            <span>비밀번호</span>
+                            <a th:href="@{/forgot}" class="fc-small">비밀번호 찾기</a>
+                        </label>
+                        <input type="password" name="password" class="form-control fc-input" required>
+                    </div>
+                    <button class="w-100 mt-3 fc-btn btn" type="submit">로그인</button>
+                </form>
+                <div class="fc-sep my-4"></div>
+                <p class="text-center fc-small mb-0">
+                    아직 계정이 없나요? <a th:href="@{/signup}"><strong>회원가입</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
