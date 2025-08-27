@@ -41,7 +41,7 @@
       if (res.ok) {
         const user = await res.json();
         localStorage.setItem("userName", user.name);
-        location.href = 'post-list.html';
+        location.href = '/post';
       } else {
         alert('로그인 실패: ' + await res.text());
       }
